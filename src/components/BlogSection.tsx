@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const posts = [
   { img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop", cat: "Market Report", title: "Metro Manila Property Market: What to Expect in 2025", meta: "May 12, 2025 · 5 min read" },
@@ -7,6 +8,7 @@ const posts = [
 ];
 
 const BlogSection = () => {
+  const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const BlogSection = () => {
           <span className="inline-block text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-gold mb-4 before:content-['—_'] after:content-['_—']">Investor Insights</span>
           <h2 className="font-display text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.1] text-obsidian">Latest From<br />Our Experts</h2>
         </div>
-        <button className="hidden md:inline-block text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-gold bg-transparent px-9 py-[0.95rem] border border-gold cursor-pointer hover:bg-gold hover:text-obsidian hover:-translate-y-0.5 transition-all">
+        <button onClick={() => navigate("/articles")} className="hidden md:inline-block text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-gold bg-transparent px-9 py-[0.95rem] border border-gold cursor-pointer hover:bg-gold hover:text-obsidian hover:-translate-y-0.5 transition-all">
           All Articles
         </button>
       </div>

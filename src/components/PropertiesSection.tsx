@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   onOpenModal: () => void;
@@ -26,6 +27,7 @@ const properties = [
 ];
 
 const PropertiesSection = ({ onOpenModal }: Props) => {
+  const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,7 +46,7 @@ const PropertiesSection = ({ onOpenModal }: Props) => {
           <span className="inline-block text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-gold mb-4 before:content-['—_'] after:content-['_—']">High-Yield Listings</span>
           <h2 className="font-display text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.1] text-obsidian">Featured<br />Investment Properties</h2>
         </div>
-        <button className="hidden md:inline-block text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-gold bg-transparent px-9 py-[0.95rem] border border-gold cursor-pointer hover:bg-gold hover:text-obsidian hover:-translate-y-0.5 transition-all">
+        <button onClick={() => navigate("/listings")} className="hidden md:inline-block text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-gold bg-transparent px-9 py-[0.95rem] border border-gold cursor-pointer hover:bg-gold hover:text-obsidian hover:-translate-y-0.5 transition-all">
           View All Listings
         </button>
       </div>

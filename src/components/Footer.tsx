@@ -51,13 +51,13 @@ const Footer = () => {
         <span>© 2025 LuxEstate Realty Corp. All rights reserved. | PRC License No. 0012345</span>
         <div className="flex gap-4">
           {[
-            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />,
-            <><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></>,
-            <><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></>,
-            <><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" /><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" /></>,
-          ].map((icon, i) => (
-            <a key={i} href="#" className="w-[34px] h-[34px] border border-gold/20 flex items-center justify-center hover:border-gold hover:bg-gold/10 transition-all">
-              <svg className="w-3.5 h-3.5 stroke-silver fill-none" strokeWidth={1.5} viewBox="0 0 24 24">{icon}</svg>
+            { href: "https://www.facebook.com/",  label: "Facebook",  icon: <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /> },
+            { href: "https://www.instagram.com/", label: "Instagram", icon: <><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></> },
+            { href: "https://www.linkedin.com/",  label: "LinkedIn",  icon: <><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></> },
+            { href: "https://www.youtube.com/",   label: "YouTube",   icon: <><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" /><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" /></> },
+          ].map((item) => (
+            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.label} className="w-[34px] h-[34px] border border-gold/20 flex items-center justify-center hover:border-gold hover:bg-gold/10 transition-all">
+              <svg className="w-3.5 h-3.5 stroke-silver fill-none" strokeWidth={1.5} viewBox="0 0 24 24">{item.icon}</svg>
             </a>
           ))}
         </div>
