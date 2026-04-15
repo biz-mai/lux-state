@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: 37 51% 54%;
+    --gold-light: 33 55% 65%;
+    --gold-pale: 40 65% 90%;
+    --gold-glow: 37 51% 54%;
+    --obsidian: 0 0% 5%;
+    --charcoal: 0 0% 10%;
+    --slate: 0 0% 17%;
+    --mid: 0 0% 42%;
+    --silver: 0 0% 78%;
+    --off-white: 30 25% 96%;
+
+    --background: 30 25% 96%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 37 51% 54%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 37 51% 54%;
+    --muted: 0 0% 17%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 37 51% 54%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 37 51% 54%;
+    --input: 0 0% 78%;
+    --ring: 37 51% 54%;
+    --radius: 0rem;
+
+    --ff-display: 'Cormorant Garamond', serif;
+    --ff-body: 'Outfit', sans-serif;
+    --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  * {
+    @apply border-border/20;
+  }
+
+  body {
+    font-family: var(--ff-body);
+    @apply bg-background text-foreground;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* Utility classes for the design system */
+.font-display {
+  font-family: var(--ff-display);
+}
+
+.font-body {
+  font-family: var(--ff-body);
+}
+
+/* Fade up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-luxury), transform 0.7s var(--ease-luxury);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up:nth-child(2) { transition-delay: 0.1s; }
+.fade-up:nth-child(3) { transition-delay: 0.2s; }
+.fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+/* Hero animation */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-hero {
+  animation: heroFadeIn 1.1s var(--ease-luxury) both;
+}
+
+@keyframes scrollBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(7px); }
+}
+.animate-scroll-bob {
+  animation: scrollBob 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.animate-toast {
+  animation: toastIn 0.4s ease;
+}
+
+/* Modal */
+.modal-overlay {
+  @apply fixed inset-0 z-[2000] flex items-center justify-center;
+  background: rgba(13,13,13,0.88);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-overlay .modal-box {
+  transform: translateY(20px);
+  transition: transform 0.3s var(--ease-luxury);
+}
+.modal-overlay.open .modal-box {
+  transform: translateY(0);
+}
+
+/* Service card bottom line */
+.service-card-line {
+  @apply absolute bottom-0 left-0 right-0 h-[2px];
+  background: hsl(var(--gold));
+  transform: scaleX(0);
+  transition: transform 0.4s var(--ease-luxury);
+  transform-origin: left;
+}
+.group:hover .service-card-line {
+  transform: scaleX(1);
+}
